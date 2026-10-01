@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the VVH storefront as a single editorial home experience with local UI state; this preserves the supplied reference flow without inventing backend behavior.
