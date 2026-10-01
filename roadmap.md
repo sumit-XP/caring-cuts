@@ -1,5 +1,5 @@
 # Roadmap
 
 - [x] Inspect supplied HTML and campaign video
-- [ ] Build the VVH storefront and interactions
-- [ ] Verify desktop and mobile presentation
+- [x] Build the VVH storefront and interactions
+- [x] Verify desktop and mobile presentation
