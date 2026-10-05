@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight, Droplet, Heart, MapPin, Menu, Phone, Scissors, Wind, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import campaignVideo from "@/assets/vvh-campaign.mp4.asset.json";
+import campaignVideo from "@/assets/vvh-campaign.mp4";
 import homeVisit from "@/assets/care-home-visit.jpg";
 import careWide from "@/assets/care-wide.jpg";
 
@@ -52,7 +52,7 @@ function CaringCuts() {
     {menu && <div className="fixed inset-0 z-[60] overflow-y-auto bg-primary text-primary-foreground"><div className="page-shell flex h-24 items-center justify-between"><span className="font-display text-3xl">Caring Cuts</span><Button aria-label="Close menu" size="icon" variant="outline" onClick={()=>setMenu(false)}><X/></Button></div><nav aria-label="Mobile navigation" className="page-shell mt-10 flex flex-col">{[...navigation,{label:"Contact Tracy",href:"#contact"}].map(n=><a key={n.href} href={n.href} onClick={()=>setMenu(false)} className="border-b border-primary-foreground/20 py-6 font-display text-3xl">{n.label}</a>)}</nav></div>}
     <main id="top" className="pt-28">
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
-        <video aria-label="Hairstyling film" autoPlay className="absolute inset-0 size-full object-cover" loop muted playsInline src={campaignVideo.url}/><div className="absolute inset-0 bg-primary/75"/>
+        <video aria-label="Hairstyling film" autoPlay className="absolute inset-0 size-full object-cover" loop muted playsInline src={campaignVideo}/><div className="absolute inset-0 bg-primary/75"/>
         <div className="page-shell relative flex min-h-[min(760px,calc(100svh-10rem))] flex-col justify-end py-12 sm:py-16">
           <div className="max-w-3xl"><p className="mb-5 text-sm text-gold">Gentle hairstyling. Personal care. Right where you are.</p><h1 className="display-title text-4xl leading-tight sm:text-6xl">Caring Cuts<br/><em className="text-gold">by Tracy du Feu</em></h1><p className="mt-6 max-w-xl text-base leading-7 text-primary-foreground/90">Compassionate, one-on-one haircare for seniors in Ottawa. Enjoy a fresh cut, colour or style in the comfort of your home or retirement residence.</p><div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button asChild variant="light"><a href={phone}><Phone className="size-4"/> Enquire about a visit</a></Button><Button asChild variant="outline"><a href="#services">Explore services <ArrowRight className="size-4"/></a></Button></div></div>
           <div className="mt-10 grid grid-cols-2 gap-5 border-t border-primary-foreground/25 pt-6 md:grid-cols-4">{[["30+ years","Hairstyling experience"],["Licensed stylist","Professional, personalized care"],["At-home visits","Comfort without the travel"],["Senior-focused","Kindness, patience & dignity"]].map(([title,copy])=><div key={title}><p className="font-display text-xl">{title}</p><p className="mt-2 text-xs leading-5 text-primary-foreground/75">{copy}</p></div>)}</div>
