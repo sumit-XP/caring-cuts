@@ -78,9 +78,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "VVH Salon Bar" },
-      { name: "description", content: "Luxury raw hair, bespoke wigs, and private salon artistry." },
-      { name: "author", content: "VVH Salon Bar" },
+      { title: "Caring Cuts by Tracy du Feu" },
+      { name: "description", content: "Compassionate mobile hairstyling for seniors in Ottawa and surrounding communities." },
+      { name: "author", content: "Caring Cuts by Tracy du Feu" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
