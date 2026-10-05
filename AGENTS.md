@@ -9,4 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Keep the VVH storefront as a single editorial home experience with local UI state; this preserves the supplied reference flow without inventing backend behavior.
+- Keep the business site as a single editorial home experience with local navigation state and telephone enquiries; this preserves the reference flow without inventing booking or backend behavior.
