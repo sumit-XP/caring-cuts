@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, ArrowUpRight, Heart, Home, MapPin, Menu, Phone, Scissors, Sparkles, Users, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Droplet, Heart, MapPin, Menu, Phone, Scissors, Wind, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import campaignVideo from "@/assets/vvh-campaign.mp4.asset.json";
+import homeVisit from "@/assets/care-home-visit.jpg";
+import careWide from "@/assets/care-wide.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -57,13 +59,35 @@ function CaringCuts() {
         </div>
       </section>
 
-      <section id="visits" className="section-pad scroll-mt-32"><div className="page-shell"><SectionHead kicker="Care that comes to you" title="Your comfort comes first" copy="For seniors, their families, and the communities they call home."/><div className="grid gap-10 md:grid-cols-3">{[
-        {icon:Home,title:"In-home hairstyling",copy:"Personal haircare in familiar surroundings, without a trip to a conventional salon."},
-        {icon:Users,title:"Retirement-residence visits",copy:"Hairstyling for seniors in retirement and assisted-living communities, including Orchard Walk Retirement Residence."},
-        {icon:Heart,title:"Care for someone you love",copy:"Arranging haircare for a parent or loved one? Speak with Tracy about their needs and where they feel most comfortable."},
-      ].map(({icon:Icon,title,copy},i)=><div className="border-t border-border pt-6" key={title}><div className="mb-6 flex items-center justify-between"><Icon className="size-8 text-secondary"/><span className="text-sm text-muted-foreground">0{i+1}</span></div><h3 className="font-display text-2xl">{title}</h3><p className="mt-4 text-base leading-7 text-muted-foreground">{copy}</p><a href="#contact" className="mt-6 inline-flex items-center gap-2 text-sm text-secondary">Enquire about a visit <ArrowUpRight className="size-4"/></a></div>)}</div></div></section>
+      <section id="visits" className="section-pad scroll-mt-32 bg-background"><div className="page-shell grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
+        <figure className="relative"><img src={homeVisit} alt="Tracy styling a smiling client's hair at home" width={1024} height={1280} loading="lazy" className="aspect-[4/5] w-full rounded-sm object-cover"/><figcaption className="mt-3 text-sm text-muted-foreground">Haircare in familiar, comfortable surroundings.</figcaption></figure>
+        <div>
+          <p className="text-[11px] uppercase tracking-[0.22em] text-secondary">Care that comes to you</p>
+          <h2 className="display-title mt-4 text-4xl sm:text-[3.25rem] sm:leading-[1.1]">Your comfort<br/><em className="text-secondary">comes first.</em></h2>
+          <ol className="mt-10 space-y-8">{[
+            {title:"In-home hairstyling",copy:"Personal haircare in familiar surroundings, without a trip to a conventional salon."},
+            {title:"Retirement-residence visits",copy:"Patient, familiar care in retirement and assisted-living communities, including Orchard Walk."},
+            {title:"Care for someone you love",copy:"Arranging haircare for a parent or loved one? Tracy can coordinate with family."},
+          ].map(({title,copy},i)=><li key={title} className="grid grid-cols-[4.5rem_1fr] gap-4 border-t border-border pt-6"><span className="font-display text-5xl leading-none text-secondary/30 sm:text-6xl">0{i+1}</span><div><h3 className="font-display text-[1.45rem] leading-tight">{title}</h3><p className="mt-2 text-base leading-[1.7] text-muted-foreground">{copy}</p></div></li>)}</ol>
+          <Button asChild className="mt-10"><a href={phone}>Arrange a visit <ArrowRight className="size-4"/></a></Button>
+        </div>
+      </div></section>
 
-      <section id="services" className="section-pad scroll-mt-32 bg-surface-soft"><div className="page-shell"><SectionHead kicker="Haircare, thoughtfully tailored" title="A fresh look. A familiar feeling." copy="From a simple trim to a colour refresh, Tracy takes the time to listen to what feels right for you."/><div role="group" aria-label="Filter services" className="mb-8 flex flex-wrap gap-2 border-b pb-5">{["All services","Cuts & styling","Colour & care"].map(f=><Button key={f} aria-pressed={filter===f} variant={filter===f?"primary":"ghost"} onClick={()=>setFilter(f)} className="normal-case tracking-normal">{f}</Button>)}</div><div className="grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">{services.filter(s=>filter==="All services"||s.category===filter).map(s=><article className="border-b py-6" key={s.name}><Scissors className="mb-4 size-5 text-secondary"/><h3 className="font-display text-2xl">{s.name}</h3><p className="mt-3 text-base leading-7 text-muted-foreground">{s.description}</p></article>)}</div><p className="mt-8 text-base leading-7 text-muted-foreground">Call Tracy to discuss pricing, availability, and which services are suitable for your home or residence appointment.</p></div></section>
+      <section id="services" className="section-pad scroll-mt-32 bg-surface-soft"><div className="page-shell">
+        <div className="mx-auto max-w-2xl text-center"><p className="text-[11px] uppercase tracking-[0.22em] text-secondary">Haircare, thoughtfully tailored</p><h2 className="display-title mt-4 text-4xl sm:text-[3.25rem] sm:leading-[1.1]">A fresh look.<br/><em className="text-secondary">A familiar feeling.</em></h2><p className="mt-5 text-base leading-[1.7] text-muted-foreground">From a simple trim to a colour refresh, every appointment is shaped around you.</p></div>
+        <div className="mt-14 grid gap-5 md:grid-cols-3">{[
+          {icon:Scissors,title:"Women's haircuts",copy:"A fresh cut shaped around your hair, face and personal style."},
+          {icon:Droplet,title:"Colour & care",copy:"Colouring, root touch-ups and conditioning with an experienced hand."},
+          {icon:Wind,title:"Shampoo & styling",copy:"A gentle wash and blow-dry to leave you feeling cared for."},
+        ].map(({icon:Icon,title,copy})=><a href="#all-services" key={title} className="group rounded-sm border border-border/60 bg-background/70 p-8 transition-colors hover:bg-background sm:p-10"><Icon strokeWidth={1.25} className="size-8 text-secondary"/><h3 className="mt-8 font-display text-[1.5rem]">{title}</h3><p className="mt-3 text-base leading-[1.7] text-muted-foreground">{copy}</p><span className="mt-6 inline-flex items-center gap-2 text-sm text-secondary">View services <ArrowRight className="size-4 transition-transform group-hover:translate-x-1"/></span></a>)}</div>
+        <div id="all-services" className="mt-20 scroll-mt-32">
+          <div role="tablist" aria-label="Filter services" className="flex flex-wrap gap-8 border-b border-border">{["All services","Cuts & styling","Colour & care"].map(f=><button key={f} role="tab" aria-selected={filter===f} onClick={()=>setFilter(f)} className={`-mb-px border-b-2 pb-3 text-base transition-colors ${filter===f?"border-secondary text-foreground":"border-transparent text-muted-foreground hover:text-foreground"}`}>{f}</button>)}</div>
+          <div className="mt-4 grid gap-x-16 sm:grid-cols-2">{services.filter(s=>filter==="All services"||s.category===filter).map(s=><div key={s.name} className="group flex items-center justify-between gap-4 border-b border-border/70 px-2 py-5 transition-colors hover:bg-background/60"><div><h4 className="font-display text-xl">{s.name}</h4><p className="mt-1 text-sm leading-6 text-muted-foreground">{s.description}</p></div><ArrowUpRight className="size-4 shrink-0 text-secondary transition-transform group-hover:translate-x-1"/></div>)}</div>
+          <p className="mt-8 text-base leading-[1.7] text-muted-foreground">Call Tracy to discuss pricing, availability, and which services suit your home or residence appointment.</p>
+        </div>
+      </div></section>
+
+      <section aria-label="Haircare that still feels like you" className="relative"><img src={careWide} alt="Tracy combing an older gentleman's hair in a sunlit residence" width={1920} height={960} loading="lazy" className="h-[60vh] min-h-[360px] w-full object-cover"/><div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/10 to-transparent"/><div className="page-shell absolute inset-x-0 bottom-0 pb-12"><p className="display-title max-w-2xl text-3xl text-primary-foreground sm:text-5xl"><em>“Haircare that still feels like you.”</em></p></div></section>
 
       <section id="about" className="section-pad scroll-mt-32 bg-primary text-primary-foreground"><div className="page-shell grid gap-12 lg:grid-cols-2"><div><p className="eyebrow text-gold">Meet your hairstylist</p><h2 className="display-title mt-4 text-4xl sm:text-5xl">Experience in every cut.<br/><em className="text-gold">Kindness in every visit.</em></h2></div><div><p className="text-lg leading-8 text-primary-foreground/90">Tracy du Feu is a licensed hairstylist with over 30 years of experience. Through Caring Cuts, she brings gentle, personalized hairstyling to seniors in their homes and retirement residences.</p><p className="mt-6 text-base leading-8 text-primary-foreground/75">Her approach centres on patience, listening, and treating each person with dignity. More than a fresh hairstyle, every appointment is an opportunity to feel comfortable, refreshed, and confident.</p><Button asChild variant="light" className="mt-8"><a href={phone}>Speak with Tracy <ArrowRight className="size-4"/></a></Button></div></div></section>
 
